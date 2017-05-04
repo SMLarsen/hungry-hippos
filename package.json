@@ -1,0 +1,11 @@
+{
+  "name": "plenty-of-fish-in-the-pond",
+  "version": "1.0.0",
+  "description": "Codewars kyu6 - Plenty of Fish in the Pond",
+  "main": "functions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve Larsen",
+  "license": "ISC"
+}
