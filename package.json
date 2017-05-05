@@ -1,11 +1,19 @@
 {
-  "name": "plenty-of-fish-in-the-pond",
+  "name": "hungry-hippos",
   "version": "1.0.0",
-  "description": "Codewars kyu6 - Plenty of Fish in the Pond",
+  "description": "Codewars kyu5 - Hungry Hippos",
   "main": "functions.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Steve Larsen",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMLarsen/hungry-hippos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SMLarsen/hungry-hippos/issues"
+  },
+  "homepage": "https://github.com/SMLarsen/hungry-hippos#readme"
 }
