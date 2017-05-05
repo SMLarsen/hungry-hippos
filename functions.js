@@ -37,6 +37,15 @@ function fish(shoal) {
     }, {
       size: 9,
       threshold: 180
+    }, {
+      size: 10,
+      threshold: 220
+    }, {
+      size: 11,
+      threshold: 264
+    }, {
+      size: 12,
+      threshold: 312
     }
 
   ];
@@ -63,12 +72,12 @@ function fish(shoal) {
       console.log(3, 'shoalIndex:', shoalIndex, 'mySize:', mySize, "myAmount:", myAmount, 'threshold:', growthRules[mySize - 1].threshold, 'shoalArray[shoalIndex]', shoalArray[shoalIndex]);
       console.log('===============================================================');
     }
-    if (shoalArray[0] > mySize || shoalArray.length === 0 || mySize === 9) {break;}
+    if (shoalArray[0] > mySize || shoalArray.length === 0 || mySize === 12) {break;}
   }
   return mySize;
 }
 
-console.log(fish("899182411002858061009414575580634881903735823104884230391158"));
+console.log(fish("94533055933648798231332371749158815844825028926870618"));
 
 /*
 Test.expect(fish("")==1, "Should return '1'")
