@@ -4,12 +4,8 @@ function fish(shoal) {
   let mySize = 1;
   let currentThreshold = 1;
   let targetAmount = 12;
-  let amountNeededToGrow = 0;
-  let sizeTotal = 0;
-  let amountAvailable = 0;
 
   // Check for empty shoal
-  console.log(shoal === "");
   if (shoal === "") {
     return mySize;
   }
@@ -46,57 +42,33 @@ function fish(shoal) {
   ];
 
   // convert shoal to array of each fish
-  console.log(shoal);
-  const shoalArray = shoal.split("");
-
-  // create array of counts of each size fish
-  let fishCounts = {};
-
-  shoalArray.forEach(function(x) {
-    fishCounts[x] = (fishCounts[x] || 0) + 1;
-    sizeTotal += parseInt(x, 10);
-  });
-  console.log('fishCounts:', fishCounts);
-
-  console.log('sizeTotal:', sizeTotal);
+  const shoalArray = shoal.split("").sort();
+  console.log('shoalArray:', shoalArray);
+  console.log('growthRules[mySize - 1].threshold:', growthRules[mySize - 1].threshold);
 
   // Feeding frenzy
-  // 1) Determine current threshold for growth
-  currentThreshold = growthRules[mySize - 1].threshold;
-  console.log('currentThreshold:', currentThreshold);
+  for (let size = 1; size <= 10; size++) {
+    for (let shoalIndex = shoalArray.length - 1; shoalIndex >= 0; shoalIndex--) {
 
-  // 2) Determine how much more fish amount needed to grow
-  amountNeededToGrow = currentThreshold - myAmount;
-  console.log('amountNeededToGrow:', amountNeededToGrow);
-
-  // 3) Check if any fish available for consumption <= my size
-  var propNames = Object.keys(fishCounts);
-  propNames.forEach(function(name) {
-    if (name <= mySize) {amountAvailable += fishCounts[name];}
-  });
-  console.log('amountAvailable:', amountAvailable);
-
-  if (amountAvailable >= amountNeededToGrow) {
-    eatFish();
-  } else {
-    return mySize;
+      console.log(1, 'shoalIndex:', shoalIndex, 'mySize:', mySize, "myAmount:", myAmount, 'threshold:', growthRules[mySize - 1].threshold, 'shoalArray[shoalIndex]', shoalArray[shoalIndex]);
+      if (shoalArray[shoalIndex] <= mySize) {
+        myAmount += parseInt(shoalArray[shoalIndex], 10);
+        shoalArray.splice(shoalIndex, 1);
+      }
+      console.log(2, 'shoalIndex:', shoalIndex, 'mySize:', mySize, "myAmount:", myAmount, 'threshold:', growthRules[mySize - 1].threshold, 'shoalArray[shoalIndex]', shoalArray[shoalIndex]);
+      if (myAmount >= growthRules[mySize - 1].threshold) {
+        mySize += 1;
+        break;
+      }
+      console.log(3, 'shoalIndex:', shoalIndex, 'mySize:', mySize, "myAmount:", myAmount, 'threshold:', growthRules[mySize - 1].threshold, 'shoalArray[shoalIndex]', shoalArray[shoalIndex]);
+      console.log('===============================================================');
+    }
+    if (shoalArray[0] > mySize || shoalArray.length === 0 || mySize === 9) {break;}
   }
-
-
-  // 4) Starting with largest available, eat fish
-  //     a) Add fish amount to my amount
-  //     b) Decrement counter for that size from fishCounts[size]
-  //     c) Repeat until either of following conditions:
-  //       1) I can growth => grow
-  //       2) There are no more available fish => done
-
-
   return mySize;
 }
 
-
-console.log(fish("11112222"));
-console.log(fish(""));
+console.log(fish("899182411002858061009414575580634881903735823104884230391158"));
 
 /*
 Test.expect(fish("")==1, "Should return '1'")
